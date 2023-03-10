@@ -20,8 +20,8 @@ io.on('connection', socket => {
         //Adiciona os usuários na mesma sala
         socket.join(roomId)
         socket.to(roomId).emit('user-connected', userId)
-        socket.on('disconnected', () => {
-            console.log('disconnected', roomId, userId)
+        socket.on('disconnect', () => {
+            console.log('disconnect!', roomId, userId)
             socket.to(roomId).emit('user-disconnected', userId)
         })
     })
