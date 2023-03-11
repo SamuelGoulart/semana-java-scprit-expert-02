@@ -1,5 +1,5 @@
 class View {
-    constructor(){}
+    constructor() {}
 
     createVideoElement({ muted = true, src, srcObject }) {
         const video = document.createElement('video')
@@ -8,7 +8,7 @@ class View {
         video.srcObject = srcObject
 
         // src = A url de gravação de video chamada 
-        if(src) {
+        if (src) {
             video.controls = true
             video.loop = true
             // Esperar 200 mile segundos para reproduzir o video
@@ -16,8 +16,8 @@ class View {
         }
 
         // srcObject = stream de dados da câmera
-        if(srcObject) {
-             // Quando ele conseguir ler os metadados da stream pode dar play
+        if (srcObject) {
+            // Quando ele conseguir ler os metadados da stream pode dar play
             video.addEventListener("loadedmetadata", _ => video.play())
         }
 
@@ -27,9 +27,9 @@ class View {
     // renderizar vídeo
     renderVideo({ userId, stream = null, url = null, isCurrentId = false, muted = true }) {
         const video = this.createVideoElement({
-            muted, 
-            src: url, 
-            srcObject: stream 
+            muted,
+            src: url,
+            srcObject: stream
         })
 
         this.appendToHTMLTree(userId, video, isCurrentId)
@@ -48,5 +48,11 @@ class View {
 
         const videoGrid = document.getElementById('video-grid')
         videoGrid.append(div)
+    }
+
+    setParticipants(count) {
+        const myself = 1
+        const participants = document.getElementById('participants')
+        participants.innerHTML = (count + myself)
     }
 } 
