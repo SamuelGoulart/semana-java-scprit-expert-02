@@ -1,5 +1,5 @@
 class Media {
-    async getCamera({ audio = false, video = true }) {
+    async getCamera({ audio = true, video = true }) {
         if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
             throw new Error(
                 `Browser API navigator.mediaDevices.getUserMedia not available`
